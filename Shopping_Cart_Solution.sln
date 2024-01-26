@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Shopping_Cart_Solution", "Shopping_Cart_Solution\", "{B6CE20A9-FB0E-4ACC-A10C-6053F9D71D3F}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_10068"
+		Debug.AspNetCompiler.PhysicalPath = "Shopping_Cart_Solution\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_10068\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_10068"
+		Release.AspNetCompiler.PhysicalPath = "Shopping_Cart_Solution\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_10068\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "10068"
+		SlnRelativePath = "Shopping_Cart_Solution\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6CE20A9-FB0E-4ACC-A10C-6053F9D71D3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6CE20A9-FB0E-4ACC-A10C-6053F9D71D3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4FBDF881-4127-4425-BCA2-AEE7DA7C69B4}
+	EndGlobalSection
+EndGlobal

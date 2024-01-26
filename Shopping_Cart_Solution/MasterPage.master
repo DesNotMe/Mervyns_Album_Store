@@ -1,0 +1,326 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Mervyn's Album Store</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/css/StyleSheet.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/MasterPage.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js"></script>
+</head>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            const firebaseConfig = {
+                apiKey: "AIzaSyA34ZGR5ea_ZVkbvtBFZVr7LuqQ21mYFXY",
+                authDomain: "mervyns-albums.firebaseapp.com",
+                projectId: "mervyns-albums",
+                storageBucket: "mervyns-albums.appspot.com",
+                messagingSenderId: "701064673978",
+                appId: "1:701064673978:web:c5b284869000f462bc2083",
+                measurementId: "G-CHBE3L22K1"
+            };
+
+            firebase.initializeApp(firebaseConfig);
+
+            // Function to sign in with Google
+            function signInWithGoogle() {
+                const provider = new firebase.auth.GoogleAuthProvider();
+
+                firebase.auth().signInWithPopup(provider)
+                    .then(function (result) {
+                        const user = result.user;
+                        console.log(user);
+                        // You can handle the signed-in user here
+                    })
+                    .catch(function (error) {
+                        const errorMessage = error.message;
+                        console.error(errorMessage);
+                    });
+            }
+
+            // Attach the click event to the button
+            document.getElementById('btnSignInWithGoogle').addEventListener('click', signInWithGoogle);
+        };
+    </script>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="maincontainer">
+                <div class="topnav">
+                    <div class="topnavdd">
+                        <button><i style="color: white;" class="material-icons">person</i></button>
+                        <div class="topnavdd-content">
+                            <%--document.getElementbyID is a type of DOM Manipulation. You can read up on what DOM Manipulation is, 
+                                but for now we will leave the code here.--%>
+                            <button type="button"
+                                onclick="document.getElementById('id01').style.display='block'"
+                                style="font-family: 'Oswald', sans-serif; color: black; float: left; width: 100%; height: 100%; text-align: left; padding: 15px;">
+                                Sign In</button>
+                            <br />
+                            <br />
+                            <a href="#" style="font-family: 'Oswald', sans-serif;">Wish List&nbsp&nbsp❤</a>
+                            <a href="#" style="font-family: 'Oswald', sans-serif;">Order Status</a>
+                            <a href="#" style="font-family: 'Oswald', sans-serif;">Payment Methods</a>
+                        </div>
+                    </div>
+                    <a href="#">Help</a>
+                    <a href="#">Gift Cards</a>
+                    <a href="#">Membership</a>
+                </div>
+
+                <div id="id01" class="modal">
+                    <form class="modal-content" action="#">
+                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        <div class="modalcontainer">
+                            <p style="font-family: 'Playfair Display', serif; font-size: 20px;">Sign In</p>
+                            <asp:TextBox ID="txt_Email" CssClass="inputtxt" PlaceHolder="Email Address" runat="server" TextMode="Email"></asp:TextBox>
+                            <asp:TextBox ID="txt_Password" CssClass="inputtxt" PlaceHolder="Password" runat="server" TextMode="Password"></asp:TextBox>
+                            <asp:CheckBox ID="CheckBox1" runat="server" Text="Remember Me" Checked="true" />
+                            <span class="psw"><a href="#">Forgot your password?</a></span><br />
+                            <asp:Button ID="btnSignIn" class="btnsignin" runat="server" Text="Secure Sign In" OnClick="btnSignIn_Click" />
+                        </div>
+
+                        <div class="modalcontainer2">
+                            <a class="signinFB">
+                                <img src="images/fbbutton.png" height="20px" width="20px;" style="padding-top: 5px;" />
+                                Sign in with Facebook</a>
+                            <a class="signinGoogle">
+                                <img src="images/googlebtn.png" height="20px" width="20px;" style="padding-top: 10px;" />
+                                Sign in with Google</a>
+                            <script type="module">
+                                import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+                                import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
+                                import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
+
+                                // Your web app's Firebase configuration
+                                const firebaseConfig = {
+                                    apiKey: "AIzaSyA34ZGR5ea_ZVkbvtBFZVr7LuqQ21mYFXY",
+                                    authDomain: "mervyns-albums.firebaseapp.com",
+                                    projectId: "mervyns-albums",
+                                    storageBucket: "mervyns-albums.appspot.com",
+                                    messagingSenderId: "701064673978",
+                                    appId: "1:701064673978:web:c5b284869000f462bc2083",
+                                    measurementId: "G-CHBE3L22K1"
+                                };
+
+                                // Initialize Firebase
+                                const app = initializeApp(firebaseConfig);
+                                const analytics = getAnalytics(app);
+                                const auth = getAuth();
+
+                                // Function to sign in with Google
+                                function signInWithGoogle() {
+                                    const provider = new GoogleAuthProvider();
+
+                                    signInWithPopup(auth, provider)
+                                        .then((result) => {
+                                            const user = result.user;
+                                            console.log(user);
+                                            // You can handle the signed-in user here
+                                        })
+                                        .catch((error) => {
+                                            const errorMessage = error.message;
+                                            console.error(errorMessage);
+                                        });
+                                }
+
+                                // Attach the click event to the button
+                                document.getElementById('btnSignInWithGoogle').addEventListener('click', signInWithGoogle);
+                            </script>
+                            <p style="text-align: center; font-size: 10px; padding-top: 50px;">By signing in you agree to our Terms of Use and Privacy Policy</p>
+                        </div>
+
+                        <div class="register">
+                            Don't have an account? 
+                            <a onclick="document.getElementById('id01').style.display='none';document.getElementById('id02').style.display='block';">Create an Account
+                            </a>
+                            <br />
+                            <a style="color: #EC7063; font-size: 12px;"
+                                onclick="document.getElementById('id01').style.display='none';document.getElementById('id03').style.display='block';">Sign in as Admin</a>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="id02" class="modal">
+                    <div class="modal-content">
+                        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        <div class="modalcontainer">
+                            <p style="font-family: 'Playfair Display', serif; font-size: 20px; text-align: center;">Create an Account</p>
+                            <asp:TextBox ID="txt_FirstName" CssClass="inputtxt" PlaceHolder="First Name" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txt_LastName" CssClass="inputtxt" PlaceHolder="Last Name" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txt_RegEmail" CssClass="inputtxt" PlaceHolder="Email Address" runat="server" TextMode="Email"></asp:TextBox>
+                            <asp:TextBox ID="txt_RegPassword" CssClass="inputtxt" PlaceHolder="Password" runat="server" TextMode="Password" ></asp:TextBox>
+                            <asp:TextBox ID="txt_ConfirmPW" CssClass="inputtxt" PlaceHolder="Confirm Password" runat="server" TextMode="Password"></asp:TextBox>
+                            <asp:CompareValidator
+                                ID="CompareValidatorPW"
+                                runat="server"
+                                ErrorMessage="Passwords do not match."
+                                ControlToValidate="txt_ConfirmPW"
+                                ControlToCompare="txt_RegPassword"
+                                Operator="Equal" Type="String"
+                                ForeColor="Red">
+                            </asp:CompareValidator>
+                            <asp:Button ID="btnRegister" class="btnsignin" runat="server" Text="Create Account" OnClick="btnRegister_Click" />
+                        </div>
+
+                        <div class="register">
+                            Already have an account? 
+                            <a onclick="document.getElementById('id01').style.display='block';document.getElementById('id02').style.display='none';"
+                                style="font-size: small; text-align: center">Sign In
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="id03" class="modal">
+                    <div class="modal-content">
+                        <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        <div class="modalcontainer">
+                            <p style="font-family: 'Playfair Display', serif; font-size: 20px; text-align: center;">Admin Sign In</p>
+                            <asp:TextBox ID="txt_AdminEmail" CssClass="inputtxt" PlaceHolder="Email Address" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txt_AdminPassword" CssClass="inputtxt" PlaceHolder="Password" runat="server" TextMode="Password"></asp:TextBox>
+                            <asp:Button ID="btnAdminSignIn" class="btnsignin" runat="server" Text="Secure Sign In" OnClick="btnAdminSignIn_Click" />
+                            <div class="register">
+                                <a onclick="document.getElementById('id01').style.display='block';document.getElementById('id03').style.display='none';" style="font-size: small;">Sign in as User</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="midnav">
+                    <%--This logo links to the home page.--%>
+                    <div class="midnavleft">
+                        <asp:LinkButton ID="LinkButton1" Style="font-size: 30px;" OnClick="btnHome_Click" runat="server">Mervyn's</asp:LinkButton>
+
+                    </div>
+
+                    <%--This searchbar will allow users to search for a book using the title/author.--%>
+                    <div class="srchbarcontainer">
+                        <asp:TextBox ID="txtSearch" PlaceHolder="Search for an item" class="searchbar" runat="server"></asp:TextBox>
+                        <asp:Button ID="btnSearch"
+                            runat="server"
+                            Style="padding: 0; margin: 0; border: none; color: black; background-color: #48C9B0"
+                            Text="GO"
+                            Height="30"
+                            Width="40"
+                            OnClick="btnSearch_Click" />
+                    </div>
+
+                    <div class="midnavright">
+                        <a href="#"><i style="color: black;" class="material-icons">location_on</i></a>
+                        <%--This shopping cart icon will allow users to view their online cart.--%>
+                        <a href="ViewCart.aspx"><i style="color: #48C9B0" class="material-icons">shopping_cart</i></a>
+                    </div>
+                </div>
+
+                <div class="btmnav">
+                    <div class="dropdownbooks">
+                        <button style="font-family: 'JetBrains Mono'; font-size: 15px;">Featured Artists</button>
+                        <div class="dropdownbooks-content">
+                            <a href="#" style="font-family: 'JetBrains Mono'; font-size: 15px;">Taylor Swift</a>
+                            <a href="#" style="font-family: 'JetBrains Mono'; font-size: 15px;">The Weekend</a>
+                            <a href="#" style="font-family: 'JetBrains Mono'; font-size: 15px;">Adele</a>
+                            <a href="#" style="font-family: 'JetBrains Mono'; font-size: 15px;">Ed Sheeran</a>
+                            <a href="#" style="font-family: 'JetBrains Mono'; font-size: 15px;">Ariana Grande</a>
+                            <a href="#" style="font-family: 'JetBrains Mono'; font-size: 15px;">Drake</a>
+                        </div>
+                    </div>
+                    <div class="dropdownbooks">
+                        <button style="font-family: 'JetBrains Mono'; font-size: 15px;">Best Sellers</button>
+                        <div class="dropdownbooks-content">
+
+                            <asp:LinkButton ID="linkBtn1" Style="font-family: 'JetBrains Mono'; font-size: 15px;" OnClick="btnHiphop_Click" runat="server">Hiphop</asp:LinkButton>
+                            <asp:LinkButton ID="linkBtn2" Style="font-family: 'JetBrains Mono'; font-size: 15px;" OnClick="btnPop_Click" runat="server">Pop</asp:LinkButton>
+                            <asp:LinkButton ID="linkBtn3" Style="font-family: 'JetBrains Mono'; font-size: 15px;" OnClick="btnFilm_Click" runat="server">Film</asp:LinkButton>
+                            <asp:LinkButton ID="linkBtn4" Style="font-family: 'JetBrains Mono'; font-size: 15px;" OnClick="btnOther_Click" runat="server">Others</asp:LinkButton>
+                            <%--                            <a style="font-family: 'JetBrains Mono'; font-size: 15px;" OnClick="btnPop_Click">Pop</a>--%>
+                        </div>
+                    </div>
+                    <a href="NewReleases.aspx" style="font-family: 'JetBrains Mono'; font-size: 15px;">New Releases</a>
+                </div>
+
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+            <div class="maincontainer">
+                <div class="footer">
+                    <div class="leftfooter">
+                        <div class="bookmarks">
+                            <p style="color: white;">SB Services</p>
+                            <p style="color: white;">Shipping</p>
+                            <p style="color: white;">About Us</p>
+                            <p style="color: white;">Quick Help</p>
+                        </div>
+                        <div class="directions">
+                            <ul>
+                                <li><a href="#" style="color: white;">Advertise</a></li>
+                                <li><a href="#" style="color: white;">Affiliate Program</a></li>
+                                <li><a href="#" style="color: white;">Publisher & Artist Guidelines</a></li>
+                                <li><a href="#" style="color: white;">Bulk Order Discounts</a></li>
+                                <li><a href="#" style="color: white;">Membership</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#" style="color: white;">Shipping FAQs</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#" style="color: white;">About Mervyn's</a></li>
+                                <li><a href="#" style="color: white;">Investor Relations</a></li>
+                                <li><a href="#" style="color: white;">Careers at Mervyn's</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#" style="color: white;">Customer Service</a></li>
+                                <li><a href="#" style="color: white;">Order Status</a></li>
+                                <li><a href="#" style="color: white;">Easy Returns</a></li>
+                                <li><a href="#" style="color: white;">Product Recalls</a></li>
+                                <li><a href="#" style="color: white;">Correction & Updates</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="rightfooter">
+                        <asp:Button ID="btnFindLocation" Style="color: antiquewhite; width: 100%; height: 40px; border: 0.5px solid; background-color: transparent; font-size: 16px; font-family: 'Poppins', sans-serif;" runat="server" Text="Locate Nearest Store" />
+                        <br />
+                        <br />
+                        <asp:Button ID="btnNewsUpdate" Style="color: antiquewhite; width: 100%; height: 40px; border: 0.5px solid; background-color: transparent; font-size: 12px; font-family: 'Poppins', sans-serif;" runat="server" Text="Sign up for news updates" />
+
+                        <div class="socialmedias">
+                            <asp:ImageButton ID="ImageButton1" Height="30px" Width="30px" ImageUrl="images/fb.png" runat="server" />
+                            <asp:ImageButton ID="ImageButton2" Height="30px" Width="30px" ImageUrl="images/twitter.png" runat="server" />
+                            <asp:ImageButton ID="ImageButton3" Height="30px" Width="30px" ImageUrl="images/ig.png" runat="server" />
+                            <asp:ImageButton ID="ImageButton4" Height="30px" Width="30px" ImageUrl="images/google.png" runat="server" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            <script>
+                function checkPasswordStrength(password) {
+                    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+                    return regex.test(password);
+                }
+
+                // Attach this function to the TextBox's onchange event
+                txt_RegPassword.onchange = function () {
+                    const password = this.value;
+                    const strength = checkPasswordStrength(password);
+                    // Provide visual feedback based on strength
+                };
+            </script>
+        </div>
+    </form>
+</body>
+</html>

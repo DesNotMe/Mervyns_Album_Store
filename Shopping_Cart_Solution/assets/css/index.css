@@ -1,0 +1,359 @@
+﻿.collage {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    height: 420px;
+    margin-top: 20px;
+}
+
+.iconcontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    padding: 40px;
+    border-bottom: 0.5px solid black;
+}
+
+    .iconcontainer a {
+        color: #0E6655;
+        text-align: center;
+    }
+
+.zone1 {
+    background-image: url('/images/Capture.PNG');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 500px;
+}
+
+    .zone1:hover {
+        opacity: 0.5;
+    }
+
+.zone2 {
+    background-image: url('/images/capture1.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 500px;
+}
+
+    .zone2:hover {
+        opacity: 0.5;
+    }
+
+.zone3 {
+    background-image: url(/images/capture2.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 500px;
+}
+
+    .zone3:hover {
+        opacity: 0.5;
+    }
+
+.bookcontainer {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    width: 100%;
+    height: 285px;
+}
+
+.zoneA {
+    text-align: center;
+    font-size: 37px;
+    font-weight: bold;
+    font-family: 'Monoton', cursive;
+}
+
+.zoneB {
+    background-image: url(/images/7.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 800px;
+}
+
+.zoneC {
+    background-image: url(/images/4.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 800px;
+}
+
+.zoneD {
+    background-image: url(/images/8.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 800px;
+}
+
+.zoneE {
+    background-image: url(/images/6.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 800px;
+}
+
+.titletext {
+    text-align: center;
+    font-size: 28px;
+    font-family: 'Aldrich', sans-serif;
+    color: #16A085;
+    border-bottom: 0.5px solid black;
+    
+}
+
+.movieposter {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    height: 465px;
+}
+
+.toyposter {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    height: 315px;
+}
+
+.poster1 {
+    background-image: url(/images/33.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 580px;
+}
+
+.poster2 {
+    background-image: url(/images/22.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 580px;
+}
+
+.poster3 {
+    background-image: url(/images/44.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 580px;
+}
+
+.toy1 {
+    background-image: url(/images/toy3.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 580px;
+}
+
+.toy2 {
+    background-image: url(/images/toy123.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 600px;
+}
+
+.toy3 {
+    background-image: url(/images/toy2.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 580px;
+}
+
+.bookcontainer2 {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    width: 100%;
+    height: 600px;
+}
+
+.zoneF {
+    background-image: url(/images/f.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.zoneG {
+    background-image: url(/images/g.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.zoneH {
+    background-image: url(/images/h.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.zoneI {
+    background-image: url(/images/i.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.zoneJ {
+    background-image: url(/images/j.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.zoneK {
+    background-image: url(/images/k.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.zoneL {
+    background-image: url(/images/turtle.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.zoneM {
+    background-image: url(/images/m.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.zoneN {
+    background-image: url(/images/n.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.zoneO {
+    background-image: url(/images/o.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.bcbtn {
+    font-family: 'Poppins', sans-serif;
+    height: 45px;
+    width: 130px;
+    color: white;
+    background-color: #0E6655;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.slideshow-container {
+    width: 100%;
+    position: relative;
+    margin: auto;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+    .prev:hover, .next:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .prev, .next, .text {
+        font-size: 11px
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .iconcontainer, .titletext {
+        font-size: 12px;
+        width: auto;
+        height: auto;
+    }
+
+        .iconcontainer i {
+            font-size: 2rem;
+        }
+
+    .collage {
+        width: auto;
+        height: 160px;
+    }
+
+    .bookcontainer {
+        width: auto;
+        height: 100px;
+    }
+
+    .bcbtn {
+        height: 20px;
+        width: 70px;
+        font-size: 8px;
+    }
+
+    .zoneA {
+        width: auto;
+        height: 250px;
+        font-size: 15px;
+    }
+
+    .movieposter {
+        height: 200px;
+    }
+
+    .toyposter {
+        height: 130px;
+    }
+
+    .bookcontainer2 {
+        height: 230px;
+    }
+}

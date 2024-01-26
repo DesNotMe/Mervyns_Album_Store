@@ -1,0 +1,118 @@
+﻿.pagetitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    color: black;
+    text-align: center;
+}
+
+.containertitle {
+    font-family: 'Martel', serif;
+    font-size: 20px;
+    color: #212F3D;
+    text-align: center;
+    border-bottom: 0.3px solid black;
+    width: 95%;
+    margin-left: 38px;
+}
+
+.signature {
+    width: 80%;
+    border: 1px solid black;
+    text-align: left;
+    font-size: 12px;
+    margin-top: 15px;
+    margin-left: 100px;
+    padding: 20px 40px 20px;
+}
+
+.sidecontainer {
+    width: 20%;
+    height: 1800px;
+    float: left;
+    text-align: left;
+    margin-bottom: 50px;
+    margin-top: 40px;
+    border-right: 0.5px solid black;
+    text-decoration: none;
+}
+
+    .sidecontainer a {
+        display: block;
+        color: black;
+        padding-top: 10px;
+        margin-top: 7px;
+        margin-left: 20px;
+    }
+
+        .sidecontainer a:hover {
+            text-decoration: underline;
+        }
+
+.bookcontainer {
+    width: 79%;
+    height: 1800px;
+    float: right;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    margin-left: 6px;
+}
+
+.bookshelf {
+    width: 100%;
+    margin-left: 38px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: 0 12px 18px 0px;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+}
+
+.bookimage {
+    width: 135px;
+    height: 200px;
+    margin-top: 20px;
+}
+
+    .bookimage:hover {
+        opacity: 0.5;
+    }
+
+.booktitle {
+    width: 135px;
+    text-align: left;
+    padding-top: 8px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.bookauthor {
+    width: 135px;
+    height: 30px;
+    text-align: left;
+    padding-top: 2px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .sidecontainer, .bookcontainer, .pagetitle {
+        height: auto;
+    }
+
+    .sidecontainer {
+        width: 23%
+    }
+
+    .bookcontainer {
+        width: 70%;
+    }
+
+    .bookshelf {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .signature {
+        margin: 0;
+    }

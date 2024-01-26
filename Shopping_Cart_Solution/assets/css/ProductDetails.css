@@ -1,0 +1,204 @@
+﻿.leftcontainer {
+    height: 570px;
+    width: 50%;
+    margin-top: 20px;
+    text-align: center;
+    float: left;
+}
+
+.rightcontainer {
+    height: 570px;
+    width: 50%;
+    margin-top: 20px;
+    padding-right: 20px;
+    text-align: left;
+    float: right;
+}
+
+.imgcontainer {
+    width: 400px;
+    height: 420px;
+    float: right;
+    margin: 83px;
+}
+
+    .imgcontainer:hover {
+        border: 3px solid #48C9B0;
+    }
+
+.booktitle {
+    font-size: 33px;
+    font-family: 'Noticia Text', serif;
+    padding-top: 80px;
+}
+
+.bookauthor {
+    font-size: 13px;
+    font-family: 'Poppins', sans-serif;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid black;
+}
+
+.bookprice {
+    font-size: 32px;
+    font-weight: bold;
+    padding-top: 5px;
+    margin-bottom: 15px;
+}
+
+.booktype {
+    float: left;
+    width: 60%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+    .booktype a {
+        display: inline-block;
+        text-align: center;
+        border: 0.5px solid gray;
+        width: 90px;
+        height: 52px;
+        color: black;
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        padding: 5px;
+    }
+
+        .booktype a:hover {
+            border: 3px solid #48C9B0;
+        }
+
+        .booktype a.active {
+            border: 3px solid #48C9B0;
+        }
+
+.bookshipping {
+    font-size: 15px;
+    font-weight: 500;
+    float: left;
+    width: 80%;
+    margin-top: 35px;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+.bookpurchase {
+    float: left;
+    margin-top: 30px;
+}
+
+.cartbutton {
+    font-family: 'Poppins', sans-serif;
+    height: 45px;
+    width: 130px;
+    color: white;
+    background-color: #2471A3;
+    border: none;
+}
+
+.wishlistbutton {
+    font-family: 'Poppins', sans-serif;
+    height: 45px;
+    width: 180px;
+    color: black;
+    background-color: transparent;
+    border: 0.6px solid black;
+}
+
+.cartbutton:hover {
+    background-color: #2C3E50;
+}
+
+.wishlistbutton:hover {
+    color: white;
+    background-color: black;
+}
+
+.bookdescription {
+    width: 100%;
+    height: 250px;
+    background-color: #CCD1D1;
+    margin-bottom: 55px;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    float: left;
+    padding: 18px
+}
+
+.leftratings {
+    width: 15.5%;
+    height: 160px;
+    margin-bottom: 40px;
+    font-family: 'Poppins', sans-serif;
+    float: left;
+    text-align: left;
+    padding: 18px;
+    background-color: #EAECEE;
+}
+
+.rightratings {
+    width: 82.5%;
+    height: 160px;
+    margin-bottom: 40px;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    float: right;
+    padding: 15px;
+    background-color: #EAECEE;
+}
+
+.footnote {
+    float: left;
+    margin-top: 35px;
+    font-size: 13px;
+}
+
+@media only screen and (max-width: 600px) {
+    .leftcontainer {
+        width: auto;
+        height: auto;
+        margin-top: 30px;
+        padding: 50px;
+    }
+
+    .rightcontainer {
+        width: auto;
+        height: auto;
+        margin: 0;
+    }
+
+    .imgcontainer {
+        margin: 0;
+    }
+
+    .booktitle {
+        padding: 0;
+    }
+
+    .bookdescription {
+        height: auto;
+        width: auto;
+        padding: 10px;
+    }
+
+    .bookshipping {
+        font-size: 12px;
+    }
+
+    .footnote {
+        font-size: 10px;
+        margin-bottom: 20px;
+    }
+
+    .leftratings {
+        height: 163px;
+        width: auto;
+    }
+
+    .rightratings {
+        height: auto;
+        width: 60%;
+    }
+}

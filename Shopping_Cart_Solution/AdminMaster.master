@@ -1,0 +1,128 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMaster.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>CS Bookstore</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/css/StyleSheet.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/MasterPage.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Include Toastr CSS -->
+    <link href="toastr.css" rel="stylesheet" />
+
+    <!-- Include Toastr JS -->
+    <script src="toastr.js"></script>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="maincontainer">
+                <div class="topnav">
+                    <div class="topnavdd">
+                        <a href="#">
+                            <asp:Label ID="lblAftLogin" runat="server" Text="ADMIN" Font-Bold="True"></asp:Label></a>
+                        <div class="topnavdd-content">
+                            <a href="index.aspx" style="font-family: 'Oswald', sans-serif; color: #EC7063">Sign Out</a>
+                        </div>
+                    </div>
+                    <a href="Admin-Users.aspx">Manage Users</a>
+                    <a href="#">Manage Orders</a>
+                </div>
+
+                <div class="midnav">
+                    <a style="color: #48C9B0; float: left; margin-left: 10px; font-size: 32px; font-family: 'Anton', sans-serif;"
+                        href="Admin-index.aspx">Mervyn's
+                    </a>
+                </div>
+
+                <div class="btmnav">
+                    <div class="dropdownbooks">
+                        <button style="font-family: 'JetBrains Mono'; font-size: 15px;">Featured Artists</button>
+                        <div class="dropdownbooks-content">
+                            <a href="#" style="font-family: 'JetBrains Mono'; font-size: 15px;">Taylor Swift</a>
+                            <a href="#" style="font-family: 'JetBrains Mono'; font-size: 15px;">The Weekend</a>
+                            <a href="#" style="font-family: 'JetBrains Mono'; font-size: 15px;">Adele</a>
+                            <a href="#" style="font-family: 'JetBrains Mono'; font-size: 15px;">Ed Sheeran</a>
+                            <a href="#" style="font-family: 'JetBrains Mono'; font-size: 15px;">Ariana Grande</a>
+                            <a href="#" style="font-family: 'JetBrains Mono'; font-size: 15px;">Drake</a>
+                        </div>
+                    </div>
+                    <div class="dropdownbooks">
+                        <button style="font-family: 'JetBrains Mono'; font-size: 15px;">Best Sellers</button>
+                        <div class="dropdownbooks-content">
+
+                            <asp:LinkButton ID="linkBtn1" href="Admin-BestSeller.aspx" Style ="font-family: 'JetBrains Mono'; font-size: 15px;" runat="server">Hiphop</asp:LinkButton>
+                            <asp:LinkButton ID="linkBtn2" href="Admin-BestSeller-2.aspx" Style="font-family: 'JetBrains Mono'; font-size: 15px;" runat="server">Pop</asp:LinkButton>
+                            <asp:LinkButton ID="linkBtn3" href="Admin-BestSeller-3.aspx" Style="font-family: 'JetBrains Mono'; font-size: 15px;" runat="server">Film</asp:LinkButton>
+                            <asp:LinkButton ID="linkBtn4" href="Admin-BestSeller-4.aspx" Style="font-family: 'JetBrains Mono'; font-size: 15px;" runat="server">Others</asp:LinkButton>
+                            <%--                            <a style="font-family: 'JetBrains Mono'; font-size: 15px;" OnClick="btnPop_Click">Pop</a>--%>
+                        </div>
+                    </div>
+                    <a href="NewReleases.aspx" style="font-family: 'JetBrains Mono'; font-size: 15px;">New Releases</a>
+                </div>
+
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+            <div class="maincontainer">
+                <div class="footer">
+                    <div class="leftfooter">
+                        <div class="bookmarks">
+                            <p style="color: white;">SB Services</p>
+                            <p style="color: white;">Shipping</p>
+                            <p style="color: white;">About Us</p>
+                            <p style="color: white;">Quick Help</p>
+                        </div>
+                        <div class="directions">
+                            <ul>
+                                <li><a href="#" style="color: white;">Advertise</a></li>
+                                <li><a href="#" style="color: white;">Affiliate Program</a></li>
+                                <li><a href="#" style="color: white;">Publisher & Artist Guidelines</a></li>
+                                <li><a href="#" style="color: white;">Bulk Order Discounts</a></li>
+                                <li><a href="#" style="color: white;">Membership</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#" style="color: white;">Shipping FAQs</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#" style="color: white;">About Mervyn's</a></li>
+                                <li><a href="#" style="color: white;">Investor Relations</a></li>
+                                <li><a href="#" style="color: white;">Careers at Mervyn's</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#" style="color: white;">Customer Service</a></li>
+                                <li><a href="#" style="color: white;">Order Status</a></li>
+                                <li><a href="#" style="color: white;">Easy Returns</a></li>
+                                <li><a href="#" style="color: white;">Product Recalls</a></li>
+                                <li><a href="#" style="color: white;">Correction & Updates</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="rightfooter">
+                        <asp:Button ID="btnFindLocation" Style="width: 100%; height: 40px; color: white; border: 0.5px solid; background-color: transparent; font-size: 16px; font-family: 'Poppins', sans-serif;" runat="server" Text="Locate Nearest Store" />
+                        <br />
+                        <br />
+                        <asp:Button ID="btnNewsUpdate" Style="width: 100%; height: 40px; color: white; border: 0.5px solid; background-color: transparent; font-size: 12px; font-family: 'Poppins', sans-serif;" runat="server" Text="Sign up for news updates" />
+
+                        <div class="socialmedias">
+                            <asp:ImageButton ID="ImageButton1" Height="30px" Width="30px" ImageUrl="images/fb.png" runat="server" Style="color: white;" />
+                            <asp:ImageButton ID="ImageButton2" Height="30px" Width="30px" ImageUrl="images/twitter.png" runat="server" Style="color: white;" />
+                            <asp:ImageButton ID="ImageButton3" Height="30px" Width="30px" ImageUrl="images/ig.png" runat="server" Style="color: white;" />
+                            <asp:ImageButton ID="ImageButton4" Height="30px" Width="30px" ImageUrl="images/google.png" runat="server" Style="color: white;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        </div>
+    </form>
+</body>
+</html>

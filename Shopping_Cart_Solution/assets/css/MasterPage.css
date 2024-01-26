@@ -1,0 +1,466 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Monoton&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Aldrich&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Martel:800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noticia+Text&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans:700&display=swap');
+
+.Star {
+    background-image: url(images/Star.gif);
+    height: 17px;
+    width: 17px;
+}
+
+.WaitingStar {
+    background-image: url(images/WaitingStar.gif);
+    height: 17px;
+    width: 17px;
+}
+
+.FilledStar {
+    background-image: url(images/FilledStar.gif);
+    height: 17px;
+    width: 17px;
+}
+
+.maincontainer {
+    height: auto;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.searchbar {
+    width: 70% !important;
+    height: 30px !important;
+    border: 0.5px solid !important;
+    background-color: #FDFEFE !important;
+}
+
+.topnav {
+    list-style: none;
+    text-align: center;
+    padding: 0px;
+    margin-bottom: 8px;
+    background-color: #232f3e;
+    height: 40px;
+    overflow: hidden;
+}
+
+    .topnav a {
+        text-decoration: none;
+        color: antiquewhite;
+        display: block;
+        padding: 12px;
+        font-size: 13px;
+        float: right
+    }
+
+        .topnav a:hover {
+            background: #FBEEE6;
+            transition: 0.4s;
+        }
+
+    .topnav button {
+        background-color: transparent;
+        border: none;
+        text-align: center;
+        color: black;
+        display: block;
+        padding: 12px;
+        font-size: 13px;
+        float: right
+    }
+
+.topnavdd {
+    float: right;
+}
+
+.topnavdd-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: 39px;
+}
+
+    .topnavdd-content a, button {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+        .topnavdd-content a:hover, button:hover {
+            background-color: #ddd;
+        }
+
+.topnavdd:hover .topnavdd-content {
+    display: block;
+}
+
+.midnav {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin-bottom: 8px;
+    background-color: #F2F3F4;
+    height: 68px;
+    width: 100%;
+    overflow: hidden;
+}
+
+    .midnav a {
+        text-decoration: none;
+        display: inline-block;
+        padding: 15px;
+        font-size: 13px;
+    }
+
+.midnavleft {
+    float: left;
+    width: 15%;
+    height: 100%;
+}
+
+    .midnavleft a {
+        color: #48C9B0;
+        float: left;
+        font-size: 30px;
+        height: 100%;
+        width: 100%;
+        font-family: 'Anton', sans-serif;
+    }
+
+.srchbarcontainer {
+    padding: 18px;
+    width: 73%;
+    height: 100%;
+    float: left;
+}
+
+.midnavright {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 12%;
+    height: 100%;
+    float: right;
+}
+
+    .midnavright a {
+        padding-top: 22px;
+    }
+
+        .midnavright a:hover {
+            background-color: #CCD1D1
+        }
+
+.btmnav {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin-top: 15px;
+    background-color: transparent;
+    height: 43px;
+    border-bottom: 0.5px solid black;
+    
+}
+
+    .btmnav a {
+        text-decoration: none;
+        color: black;
+        display: inline-block;
+        padding: 12px;
+        font-size: 10px;
+        font-family: 'Quicksand', sans-serif;
+    }
+
+        .btmnav a:hover {
+            background: #F4F6F6;
+            transition: 0.4s;
+        }
+
+    .btmnav button {
+        text-decoration: none;
+        background-color: transparent;
+        color: black;
+        border: none;
+        display: inline-block;
+        padding: 12px;
+        font-size: 10px;
+        font-family: 'Quicksand', sans-serif;
+        height: 43px;
+    }
+
+        .btmnav button:hover {
+            background: #F4F6F6;
+            transition: 0.4s;
+        }
+
+.dropdownbooks {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdownbooks-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    .dropdownbooks-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+    }
+
+        .dropdownbooks-content a:hover {
+            background-color: transparent;
+            color: #48C9B0;
+        }
+
+.dropdownbooks:hover .dropdownbooks-content {
+    display: grid;
+    grid-column-gap: 100px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.footer {
+    width: 100%;
+    height: 280px;
+    border-top: 0.5px solid black;
+    border-bottom: 0.5px solid black;
+    margin-bottom: 50px;
+    font-family: 'Poppins', sans-serif;
+    float: left;
+    background-color: #232f3e;
+
+}
+
+.leftfooter {
+    width: 70%;
+    height: 300px;
+    float: left;
+}
+
+.rightfooter {
+    width: 30%;
+    height: 300px;
+    float: right;
+    padding: 30px;
+}
+
+.bookmarks {
+    width: 100%;
+    height: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding-top: 10px;
+    padding-left: 50px;
+    font-size: 16px;
+}
+
+.directions {
+    width: 100%;
+    height: 250px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding-left: 50px;
+}
+
+    .directions a {
+        font-size: 11.5px;
+        color: #48C9B0;
+        display: block;
+    }
+
+.socialmedias {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 30px;
+    grid-gap: 10px;
+}
+
+.modalcontainer {
+    padding: 16px;
+}
+
+.directions li a:hover {
+    text-decoration: underline;
+}
+
+.modalcontainer2 {
+    padding-left: 16px;
+    padding-right: 16px;
+    height: auto;
+    border-bottom: 0.5px solid;
+}
+
+span.psw {
+    float: right;
+    font-size: 12px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    margin-top: 10px;
+    width: 40%;
+    height: auto;
+    background-color: white;
+    color: black;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+}
+
+    .close:hover,
+    .close:focus {
+        color: red;
+        cursor: pointer;
+    }
+
+.inputtxt {
+    width: 100%;
+    height: 25px;
+    border: 0.7px solid !important;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btnsignin {
+    width: 100%;
+    height: 45px;
+    background-color: #0E6655;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: white;
+    margin-top: 8px;
+}
+
+    .btnsignin:hover {
+        opacity: 0.9;
+    }
+
+.signinFB {
+    width: 48%;
+    height: 30px;
+    background-color: #2471A3;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: white;
+    display: block;
+    text-align: center;
+    float: left;
+}
+
+    .signinFB:hover {
+        opacity: 0.9;
+    }
+
+.signinGoogle {
+    width: 48%;
+    height: 30px;
+    background-color: transparent;
+    border: 0.5px solid;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: black;
+    display: block;
+    text-align: center;
+    float: right;
+}
+
+    .signinGoogle:hover {
+        border: 1.5px solid;
+    }
+
+.register {
+    text-align: center;
+    font-size: 13px;
+    color: black;
+    padding: 13px;
+    height: auto;
+}
+
+::placeholder {
+    color: #707B7C;
+    padding: 10px;
+    font-size: 13px;
+}
+
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .btmnav {
+        font-size: 3px;
+        width: auto;
+        height: auto;
+    }
+
+    .footer {
+        width: auto;
+        height: auto;
+    }
+
+    .bookmarks {
+        width: 400px;
+        height: auto;
+        font-size: small;
+        padding: 0px;
+    }
+
+    .rightfooter {
+        height: auto;
+        width: auto;
+        float: left;
+        padding: 0;
+    }
+
+    .directions {
+        height: auto;
+        width: 400px;
+        font-size: 9px;
+        padding: 0;
+    }
+
+    .signinFB, .signinGoogle {
+        height: auto;
+        margin-bottom: 15px;
+    }
+
+    .inputtxt, .btnsignin {
+        font-size: small
+    }
+}
