@@ -13,12 +13,15 @@
     static void RegisterRoutes (RouteCollection routes)
     {
         //routes .MapPageRoute ("UniqueName", "Name to be shown on address bar", "physical path")
-        routes.MapPageRoute("Home", "Home", "~/Index.aspx");
-        routes.MapPageRoute("BestSeller_Pop", "BestSellerPop", "~/BestSeller2.aspx");
-        routes.MapPageRoute("BestSeller_Hiphop", "BestSellerHiphop", "~/BestSeller.aspx");
-        routes.MapPageRoute("BestSeller_Film", "BestSellerFilm", "~/BestSeller3.aspx");
-        routes.MapPageRoute("BestSeller_Other", "BestSellerOthers", "~/BestSeller4.aspx");
-        routes.MapPageRoute("NewReleases", "NewReleases", "~/NewReleases.aspx");
+        routes.MapPageRoute("Home", "home", "~/index.aspx");
+        routes.MapPageRoute("BestSeller_Pop", "bestSellerPop", "~/BestSeller2.aspx");
+        routes.MapPageRoute("BestSeller_Hiphop", "bestSellerHiphop", "~/BestSeller.aspx");
+        routes.MapPageRoute("BestSeller_Film", "bestSellerFilm", "~/BestSeller3.aspx");
+        routes.MapPageRoute("BestSeller_Other", "bestSellerOthers", "~/BestSeller4.aspx");
+        routes.MapPageRoute("NewReleases", "newReleases", "~/NewReleases.aspx");
+        routes.MapPageRoute("ForgetPw", "forgetPassword", "~/ForgetPassword.aspx");
+        routes.MapPageRoute("ResetPw", "resetPassword", "~/ResetPassword.aspx");
+        routes.MapPageRoute("ProductDetails", "productDetails", "~/ProductDetails.aspx");
 
     }
 

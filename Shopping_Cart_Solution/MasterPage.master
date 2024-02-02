@@ -13,47 +13,14 @@
     <link rel="stylesheet" href="assets/css/StyleSheet.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/MasterPage.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js"></script>
 </head>
 
-    <script type="text/javascript">
-        window.onload = function () {
-            const firebaseConfig = {
-                apiKey: "AIzaSyA34ZGR5ea_ZVkbvtBFZVr7LuqQ21mYFXY",
-                authDomain: "mervyns-albums.firebaseapp.com",
-                projectId: "mervyns-albums",
-                storageBucket: "mervyns-albums.appspot.com",
-                messagingSenderId: "701064673978",
-                appId: "1:701064673978:web:c5b284869000f462bc2083",
-                measurementId: "G-CHBE3L22K1"
-            };
 
-            firebase.initializeApp(firebaseConfig);
-
-            // Function to sign in with Google
-            function signInWithGoogle() {
-                const provider = new firebase.auth.GoogleAuthProvider();
-
-                firebase.auth().signInWithPopup(provider)
-                    .then(function (result) {
-                        const user = result.user;
-                        console.log(user);
-                        // You can handle the signed-in user here
-                    })
-                    .catch(function (error) {
-                        const errorMessage = error.message;
-                        console.error(errorMessage);
-                    });
-            }
-
-            // Attach the click event to the button
-            document.getElementById('btnSignInWithGoogle').addEventListener('click', signInWithGoogle);
-        };
-    </script>
 <body>
     <form id="form1" runat="server">
         <div>
@@ -87,8 +54,14 @@
                             <p style="font-family: 'Playfair Display', serif; font-size: 20px;">Sign In</p>
                             <asp:TextBox ID="txt_Email" CssClass="inputtxt" PlaceHolder="Email Address" runat="server" TextMode="Email"></asp:TextBox>
                             <asp:TextBox ID="txt_Password" CssClass="inputtxt" PlaceHolder="Password" runat="server" TextMode="Password"></asp:TextBox>
-                            <asp:CheckBox ID="CheckBox1" runat="server" Text="Remember Me" Checked="true" />
-                            <span class="psw"><a href="#">Forgot your password?</a></span><br />
+                            <input type="checkbox" id="showPassword3" onclick="togglePasswordVisibilitySign()">
+                            <p style="display: inline;">Show password 🙈</p>
+                            <br />
+                            <!-- Add a line break to move to the next line -->
+                            <asp:Image ID="Image" runat="server" Style="height: 70px; width: 150px; margin-right: 50px;" ImageUrl="~/MyCaptcha.aspx" />
+
+                            <asp:TextBox ID="code" runat="server" CssClass="inputtxt" PlaceHolder="Enter Captcha code here"></asp:TextBox>
+                            <span class="psw"><a href="ForgetPassword.aspx">Forgot your password?</a></span><br />
                             <asp:Button ID="btnSignIn" class="btnsignin" runat="server" Text="Secure Sign In" OnClick="btnSignIn_Click" />
                         </div>
 
@@ -99,46 +72,6 @@
                             <a class="signinGoogle">
                                 <img src="images/googlebtn.png" height="20px" width="20px;" style="padding-top: 10px;" />
                                 Sign in with Google</a>
-                            <script type="module">
-                                import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
-                                import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
-                                import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
-
-                                // Your web app's Firebase configuration
-                                const firebaseConfig = {
-                                    apiKey: "AIzaSyA34ZGR5ea_ZVkbvtBFZVr7LuqQ21mYFXY",
-                                    authDomain: "mervyns-albums.firebaseapp.com",
-                                    projectId: "mervyns-albums",
-                                    storageBucket: "mervyns-albums.appspot.com",
-                                    messagingSenderId: "701064673978",
-                                    appId: "1:701064673978:web:c5b284869000f462bc2083",
-                                    measurementId: "G-CHBE3L22K1"
-                                };
-
-                                // Initialize Firebase
-                                const app = initializeApp(firebaseConfig);
-                                const analytics = getAnalytics(app);
-                                const auth = getAuth();
-
-                                // Function to sign in with Google
-                                function signInWithGoogle() {
-                                    const provider = new GoogleAuthProvider();
-
-                                    signInWithPopup(auth, provider)
-                                        .then((result) => {
-                                            const user = result.user;
-                                            console.log(user);
-                                            // You can handle the signed-in user here
-                                        })
-                                        .catch((error) => {
-                                            const errorMessage = error.message;
-                                            console.error(errorMessage);
-                                        });
-                                }
-
-                                // Attach the click event to the button
-                                document.getElementById('btnSignInWithGoogle').addEventListener('click', signInWithGoogle);
-                            </script>
                             <p style="text-align: center; font-size: 10px; padding-top: 50px;">By signing in you agree to our Terms of Use and Privacy Policy</p>
                         </div>
 
@@ -161,7 +94,9 @@
                             <asp:TextBox ID="txt_FirstName" CssClass="inputtxt" PlaceHolder="First Name" runat="server"></asp:TextBox>
                             <asp:TextBox ID="txt_LastName" CssClass="inputtxt" PlaceHolder="Last Name" runat="server"></asp:TextBox>
                             <asp:TextBox ID="txt_RegEmail" CssClass="inputtxt" PlaceHolder="Email Address" runat="server" TextMode="Email"></asp:TextBox>
-                            <asp:TextBox ID="txt_RegPassword" CssClass="inputtxt" PlaceHolder="Password" runat="server" TextMode="Password" ></asp:TextBox>
+                            <asp:TextBox ID="txt_RegPassword" CssClass="inputtxt" PlaceHolder="Password" runat="server" TextMode="Password"></asp:TextBox>
+                            <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()">
+                            <p style="display: inline;">Show password 👀</p>
                             <asp:TextBox ID="txt_ConfirmPW" CssClass="inputtxt" PlaceHolder="Confirm Password" runat="server" TextMode="Password"></asp:TextBox>
                             <asp:CompareValidator
                                 ID="CompareValidatorPW"
@@ -172,6 +107,8 @@
                                 Operator="Equal" Type="String"
                                 ForeColor="Red">
                             </asp:CompareValidator>
+                            <asp:Image ID="captchaImage" runat="server" Style="height=40px; width=150px; margin-right: 50px;" ImageUrl="~/MyCaptcha.aspx" />
+                            <asp:TextBox ID="captchacode" runat="server" CssClass="inputtxt" PlaceHolder="Enter Captcha code here"></asp:TextBox>
                             <asp:Button ID="btnRegister" class="btnsignin" runat="server" Text="Create Account" OnClick="btnRegister_Click" />
                         </div>
 
@@ -190,7 +127,11 @@
                         <div class="modalcontainer">
                             <p style="font-family: 'Playfair Display', serif; font-size: 20px; text-align: center;">Admin Sign In</p>
                             <asp:TextBox ID="txt_AdminEmail" CssClass="inputtxt" PlaceHolder="Email Address" runat="server"></asp:TextBox>
-                            <asp:TextBox ID="txt_AdminPassword" CssClass="inputtxt" PlaceHolder="Password" runat="server" TextMode="Password"></asp:TextBox>
+                            <asp:TextBox ID="txt_AdminPassword" CssClass="inputtxt" PlaceHolder="Password" runat="server" TextMode="Password">
+                            </asp:TextBox>
+                            <input type="checkbox" id="showPassword2" onclick="togglePasswordVisibilityAdmin()">
+                            <p style="display: inline;">Show password 👀</p>
+
                             <asp:Button ID="btnAdminSignIn" class="btnsignin" runat="server" Text="Secure Sign In" OnClick="btnAdminSignIn_Click" />
                             <div class="register">
                                 <a onclick="document.getElementById('id01').style.display='block';document.getElementById('id03').style.display='none';" style="font-size: small;">Sign in as User</a>
@@ -319,6 +260,47 @@
                     const strength = checkPasswordStrength(password);
                     // Provide visual feedback based on strength
                 };
+                function closeAlert() {
+                    const alert = document.getElementById('alert');
+                    alert.style.display = 'none';
+                }
+
+                function togglePasswordVisibility() {
+                    var passwordInput = document.getElementById("txt_RegPassword");
+                    var showPasswordCheckbox = document.getElementById("showPassword");
+                    if (showPasswordCheckbox.checked) {
+                        passwordInput.type = "text";
+                    } else {
+                        passwordInput.type = "password";
+                    }
+                }
+                function togglePasswordVisibilityAdmin() {
+                    var passwordInput2 = document.getElementById("txt_AdminPassword");
+                    var showPasswordCheckbox2 = document.getElementById("showPassword2");
+
+                    if (showPasswordCheckbox2.checked) {
+                        passwordInput2.type = "text";
+                    } else {
+                        passwordInput2.type = "password";
+                    }
+                }
+                function togglePasswordVisibilitySign() {
+                    var passwordInput3 = document.getElementById("txt_Password");
+                    var showPasswordCheckbox3 = document.getElementById("showPassword3");
+
+                    if (showPasswordCheckbox3.checked) {
+                        passwordInput3.type = "text";
+                    } else {
+                        passwordInput3.type = "password";
+                    }
+                }
+
+                function scrollToTop() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+                }
             </script>
         </div>
     </form>

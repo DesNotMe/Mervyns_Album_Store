@@ -14,13 +14,8 @@ using Google.Apis.Auth.OAuth2;
 using System.Text;
 using System.IO;
 using System.Net;
-using FirebaseAdmin;
-using Google.Apis.Logging;
-using FirebaseAdmin.Auth;
-
 public partial class MasterPage : System.Web.UI.MasterPage
 {
-    bool flg = false;
     protected void Page_Load(object sender, EventArgs e)
     {
         //flg = false;
@@ -43,47 +38,56 @@ public partial class MasterPage : System.Web.UI.MasterPage
         Guid newGUID = Guid.NewGuid();
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["App_Data"].ConnectionString);
         
-        conn.Open();
-
-        bool exists = false;
-
-        using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM [REGISTRATION] WHERE Email = @email", conn))
+        if (captchacode.Text.ToLower() == Session["sessionCaptcha"].ToString())
         {
-            //checks if the email that the user has entered exists in the database table
-            cmd.Parameters.AddWithValue("Email", txt_RegEmail.Text);
-            exists = (int)cmd.ExecuteScalar() > 0;
-        }
+            conn.Open();
 
-        //if the email exists, send an alert
-        if (exists)
-        {
-            Response.Write("<script>alert('Sorry, Email is already taken!');</script>");
-        }
+            bool exists = false;
 
-        //else, insert 
+            using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM [REGISTRATION] WHERE Email = @email", conn))
+            {
+                //checks if the email that the user has entered exists in the database table
+                cmd.Parameters.AddWithValue("Email", txt_RegEmail.Text);
+                exists = (int)cmd.ExecuteScalar() > 0;
+            }
+
+            //if the email exists, send an alert
+            if (exists)
+            {
+                Response.Write("<script>alert('Sorry, Email is already taken!');</script>");
+            }
+
+            //else, insert 
+            else
+            {
+                string insertQuery = "INSERT INTO REGISTRATION (Id, First_Name, Last_Name, Email, Password) " +
+                    "values (@id, @first, @last, @email, @password)";
+
+                SqlCommand com = new SqlCommand(insertQuery, conn);
+                string ePass = Hash.ComputeHash(txt_RegPassword.Text, "SHA512", null);
+                com.Parameters.AddWithValue("@password", ePass);
+                com.Parameters.AddWithValue("@id", newGUID.ToString());
+                com.Parameters.AddWithValue("@email", txt_RegEmail.Text);
+                com.Parameters.AddWithValue("@first", txt_FirstName.Text);
+                com.Parameters.AddWithValue("@last", txt_LastName.Text);
+
+                com.ExecuteNonQuery();
+
+                Response.Write("<script>alert('Successfully created account! Welcome! ');</script>");
+            }
+        }
         else
         {
-            string insertQuery = "INSERT INTO REGISTRATION (Id, First_Name, Last_Name, Email, Password) " +
-                "values (@id, @first, @last, @email, @password)";
-
-            SqlCommand com = new SqlCommand(insertQuery, conn);
-            string ePass = Hash.ComputeHash(txt_RegPassword.Text, "SHA512", null);
-            com.Parameters.AddWithValue("@password", ePass);
-            com.Parameters.AddWithValue("@id", newGUID.ToString());
-            com.Parameters.AddWithValue("@email", txt_RegEmail.Text);
-            com.Parameters.AddWithValue("@first", txt_FirstName.Text);
-            com.Parameters.AddWithValue("@last", txt_LastName.Text);
-
-            com.ExecuteNonQuery();
-
-            Response.Write("<script>alert('Successfully created account! Welcome! ');</script>");
+            Response.Write("<script>alert('Sorry, Incorrect particulars!');</script>");
         }
+
 
         conn.Close();
 
         txt_FirstName.Text = "";
         txt_LastName.Text = "";
         txt_RegEmail.Text = "";
+        captchacode.Text = "";
     }
 
     protected void btnSignIn_Click(object sender, EventArgs e)
@@ -100,67 +104,47 @@ public partial class MasterPage : System.Web.UI.MasterPage
         int temp = Convert.ToInt32(com.ExecuteScalar().ToString());
 
         conn.Close();
-
-        if (temp == 1)//checks if email exists inside DB
+        if (code.Text.ToLower() == Session["sessionCaptcha"].ToString())
         {
-            conn.Open();
-
-            string checkPasswordQuery = "SELECT Password FROM REGISTRATION WHERE Email = @email2";
-
-            SqlCommand pwcomm = new SqlCommand(checkPasswordQuery, conn);
-            pwcomm.Parameters.AddWithValue("@email2", txt_Email.Text);
-            string password = pwcomm.ExecuteScalar().ToString();
-            bool flag = Hash.VerifyHash(txt_Password.Text, "SHA512", password);//verifies password through hash function
-
-            if (flag == true)
+            if (temp == 1)//checks if email exists inside DB
             {
-                Session["CHANGE_MASTERPAGE"] = "~/AfterLogin.Master";
-                Session["CHANGE_MASTERPAGE2"] = null;
-                Response.Redirect(Request.Url.AbsoluteUri);
+                conn.Open();
+
+                string checkPasswordQuery = "SELECT Password FROM REGISTRATION WHERE Email = @email2";
+
+                SqlCommand pwcomm = new SqlCommand(checkPasswordQuery, conn);
+                pwcomm.Parameters.AddWithValue("@email2", txt_Email.Text);
+                string password = pwcomm.ExecuteScalar().ToString();
+                bool flag = Hash.VerifyHash(txt_Password.Text, "SHA512", password);//verifies password through hash function
+
+                if (flag == true)
+                {
+                    Session["CHANGE_MASTERPAGE"] = "~/AfterLogin.Master";
+                    Session["CHANGE_MASTERPAGE2"] = null;
+                    Response.Redirect("~/index.aspx");
+
+                }
+                else
+                {
+                    Response.Write("<script language=javascript>alert('Password or email is not correct')</script>");
+                }
             }
             else
             {
-                Response.Write("<script language=javascript>alert('Password or UserName is not correct')</script>");
+                Response.Write("<script language=javascript>alert('Password or email is not correct')</script>");
             }
         }
         else
         {
-            Response.Write("<script language=javascript>alert('Password or UserName is not correct')</script>");
+            Response.Write("<script language=javascript>alert('Recaptcha failed')</script>");
         }
+
+
 
         txt_Email.Text = ""; //clears textbox after login
+        code.Text = "";
     }
 
-    private bool VerifyReCaptcha(string recaptchaSecretKey)
-    {
-        string response = Request.Form["g-recaptcha-response"];
-        string url = $"https://www.google.com/recaptcha/api/siteverify?secret={recaptchaSecretKey}&response={response}";
-
-        WebRequest request = WebRequest.Create(url);
-        request.Method = "POST";
-
-        // Add this line to set the content length
-        request.ContentLength = 0;
-
-        using (WebResponse reCaptchaResponse = request.GetResponse())
-        {
-            using (Stream dataStream = reCaptchaResponse.GetResponseStream())
-            {
-                using (StreamReader reader = new StreamReader(dataStream))
-                {
-                    string jsonResponse = reader.ReadToEnd();
-                    // Parse the JSON response and check if reCAPTCHA verification is successful
-                    // Adjust the parsing logic based on the reCAPTCHA response format
-                    if (jsonResponse.Contains("\"success\": true"))
-                    {
-                        return true;
-                    }
-                }
-            }
-        }
-
-        return false;
-    }
 
     protected void btnAdminSignIn_Click(object sender, EventArgs e)
     {
