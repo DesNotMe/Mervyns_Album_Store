@@ -21,7 +21,6 @@
         routes.MapPageRoute("NewReleases", "newReleases", "~/NewReleases.aspx");
         routes.MapPageRoute("ForgetPw", "forgetPassword", "~/ForgetPassword.aspx");
         routes.MapPageRoute("ResetPw", "resetPassword", "~/ResetPassword.aspx");
-        routes.MapPageRoute("ProductDetails", "productDetails", "~/ProductDetails.aspx");
 
     }
 

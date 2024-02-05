@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using FirebaseAdmin.Messaging;
 
 public partial class ProductDetails : BasePage
 {
@@ -74,5 +75,25 @@ public partial class ProductDetails : BasePage
         sda.Fill(dt);
         return dt;
 
+    }
+    public void btnAddCart_Click(object sender, EventArgs e)
+    {
+        Guid newUuid = Guid.NewGuid();
+        SqlConnection con = new SqlConnection(constr);
+        SqlCommand cmd = new SqlCommand("INSERT INTO Cart VALUES (@id,@name,@price,@quantity,@image,@userid)");
+        SqlDataAdapter sda = new SqlDataAdapter();
+        cmd.CommandType = CommandType.Text;
+        cmd.Parameters.AddWithValue("@id", newUuid);
+        cmd.Parameters.AddWithValue("@name", lblTitle.Text);
+        cmd.Parameters.AddWithValue("@price", lblPrice.Text);
+        cmd.Parameters.AddWithValue("@quantity", "1");
+        cmd.Parameters.AddWithValue("@image", imgProductDetails.ImageUrl);
+        cmd.Parameters.AddWithValue("@userid", Session["Email"].ToString());
+        cmd.Connection = con;
+        con.Open();
+        cmd.ExecuteNonQuery();
+        con.Close();
+        Response.Write("<script language='javascript'>alert('Added to cart');</script>");
+        Response.Redirect(Request.Url.AbsoluteUri);
     }
 }

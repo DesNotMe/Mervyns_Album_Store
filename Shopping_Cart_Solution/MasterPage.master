@@ -55,13 +55,14 @@
                             <asp:TextBox ID="txt_Email" CssClass="inputtxt" PlaceHolder="Email Address" runat="server" TextMode="Email"></asp:TextBox>
                             <asp:TextBox ID="txt_Password" CssClass="inputtxt" PlaceHolder="Password" runat="server" TextMode="Password"></asp:TextBox>
                             <input type="checkbox" id="showPassword3" onclick="togglePasswordVisibilitySign()">
-                            <p style="display: inline;">Show password 🙈</p>
+                            <p style="display: inline;">Show password 👀</p>
                             <br />
                             <!-- Add a line break to move to the next line -->
                             <asp:Image ID="Image" runat="server" Style="height: 70px; width: 150px; margin-right: 50px;" ImageUrl="~/MyCaptcha.aspx" />
 
                             <asp:TextBox ID="code" runat="server" CssClass="inputtxt" PlaceHolder="Enter Captcha code here"></asp:TextBox>
-                            <span class="psw"><a href="ForgetPassword.aspx">Forgot your password?</a></span><br />
+                            
+                            <span class="psw"><asp:Button runat="server" Onclick="forgetPassword" Text="Forgot your password?"/></span><br />
                             <asp:Button ID="btnSignIn" class="btnsignin" runat="server" Text="Secure Sign In" OnClick="btnSignIn_Click" />
                         </div>
 

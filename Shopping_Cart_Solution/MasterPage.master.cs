@@ -213,4 +213,8 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         Response.Redirect("Home");
     }
+    protected void forgetPassword(object sender, EventArgs e)
+    {
+        Response.Redirect("forgetPassword");
+    }
 }

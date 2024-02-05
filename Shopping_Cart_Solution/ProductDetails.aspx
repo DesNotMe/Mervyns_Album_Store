@@ -64,7 +64,7 @@
             </div>
 
             <div class="bookpurchase">
-                <asp:Button ID="btnAddCart" runat="server" Text="ADD TO CART" class="cartbutton" />
+                <asp:Button ID="btnAddCart" runat="server" Text="ADD TO CART" class="cartbutton" OnClick="btnAddCart_Click" />
             </div>
 
             <div class="footnote">
