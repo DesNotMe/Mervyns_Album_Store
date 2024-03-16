@@ -64,7 +64,11 @@
             </div>
 
             <div class="bookpurchase">
-                <asp:Button ID="btnAddCart" runat="server" Text="ADD TO CART" class="cartbutton" OnClick="btnAddCart_Click" />
+                <a href="/AddToCart.aspx?productID=<%#:Eval("ID") %>">
+                    <span class="ProductListItem">
+                        <b>Add To Cart<b>
+                    </span>
+                </a>
             </div>
 
             <div class="footnote">

@@ -1,0 +1,1 @@
+Forget password working - teacher the reason forgot password was not working when I was presenting was because I was connected to the school wifi, and perhaps the school wifi blocks the smtp server from sending the link. So if you connect it to your home wifi, it will work, sorry and thank you.

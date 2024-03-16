@@ -24,7 +24,7 @@ public partial class ProductDetails : BasePage
         Product aProd = new Product();
 
         //request ProdID from QueryString (PostBackURL)
-        string prodID = Request.QueryString["ProdID"].ToString();
+        int prodID = int.Parse(Request.QueryString["ProdID"].ToString());
         prod = aProd.getProduct(prodID);
 
         lblTitle.Text = prod.Product_Name;

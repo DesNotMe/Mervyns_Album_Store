@@ -6,6 +6,7 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data.Entity;
 
 /// <summary>
 /// Summary description for Product
@@ -14,7 +15,6 @@ public class Product
 {
     //system.Configuration.ConnectionStringSettings _connStr;
     string _connStr = ConfigurationManager.ConnectionStrings["App_Data"].ConnectionString;
-    private string _prodID = null;
     private string _prodName = string.Empty;
     private string _prodDesc = "";
     private decimal _unitPrice = 0;
@@ -26,10 +26,10 @@ public class Product
     {
     }
 
-    public Product(string prodID, string prodName, string prodDesc,
+    public Product(int prodID, string prodName, string prodDesc,
                    decimal unitPrice, string prodImage, string albumArtist, string albumGenre)
     {
-        _prodID = prodID;
+        Product_ID = prodID;
         _prodName = prodName;
         _prodDesc = prodDesc;
         _unitPrice = unitPrice;
@@ -41,11 +41,7 @@ public class Product
     //get/set the attributes of the Product object.
     //note the attribute name (e.g. Product_ID) is same as the actual database field name.
     //this is for ease of referencing.
-    public string Product_ID
-    {
-        get { return _prodID; }
-        set { _prodID = value; }
-    }
+    public int? Product_ID { get; set; } = null;
     public string Product_Name
     {
         get { return _prodName; }
@@ -79,7 +75,7 @@ public class Product
     }
 
     //below as the Class methods for some DB operations. 
-    public Product getProduct(string prodID)
+    public Product getProduct(int prodID)
     {
         Product prodDetail = null;
 

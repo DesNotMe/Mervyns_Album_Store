@@ -23,7 +23,7 @@ public partial class Admin_InsertOther : System.Web.UI.Page
             image = "images/" + FileUpload1.FileName;
         }
 
-        Product prod = new Product(txtThrillerID.Text, txtThrillerName.Text,
+        Product prod = new Product(int.Parse(txtThrillerID.Text), txtThrillerName.Text,
             txtThrillerDesc.Text, decimal.Parse(txtThrillerPrice.Text),
             image, txtThrillerAuthor.Text, txtThrillerGenre.Text);
         Thriller item = new Thriller(txtThrillerID.Text, image, 
